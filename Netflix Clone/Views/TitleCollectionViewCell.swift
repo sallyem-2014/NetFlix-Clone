@@ -33,7 +33,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
   }
   
   func setupPosterImage(with model: String?) {
-    guard let model = model , let url = URL(string: model) else { return }
+    guard let model = model , let url = URL(string: "https://image.tmdb.org/t/p/w500" + model) else { return }
     posterImage.kf.setImage(with: url)
   }
 }
