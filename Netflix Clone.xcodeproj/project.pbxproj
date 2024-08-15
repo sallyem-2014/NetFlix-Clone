@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A94A27735AFB6F2C5FCE514 /* Pods_Netflix_Clone_Netflix_CloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5533D5BE0206472CACDC4AF /* Pods_Netflix_Clone_Netflix_CloneUITests.framework */; };
+		3A019D6C2C6B96F80039E779 /* UpComingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A019D6B2C6B96F80039E779 /* UpComingTableViewCell.swift */; };
+		3A019D972C6DF39F0039E779 /* TitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A019D962C6DF39F0039E779 /* TitleViewModel.swift */; };
 		3AB5E4A62C638BCE00611A31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB5E4A52C638BCE00611A31 /* AppDelegate.swift */; };
 		3AB5E4A82C638BCE00611A31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB5E4A72C638BCE00611A31 /* SceneDelegate.swift */; };
 		3AB5E4AA2C638BCE00611A31 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB5E4A92C638BCE00611A31 /* MainTabbarViewController.swift */; };
@@ -51,6 +53,8 @@
 		0DF26B40D12ECAA7DE777A98 /* Pods-Netflix CloneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Netflix CloneTests.release.xcconfig"; path = "Target Support Files/Pods-Netflix CloneTests/Pods-Netflix CloneTests.release.xcconfig"; sourceTree = "<group>"; };
 		1A2B4478336C11262E824C42 /* Pods-Netflix Clone-Netflix CloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Netflix Clone-Netflix CloneUITests.release.xcconfig"; path = "Target Support Files/Pods-Netflix Clone-Netflix CloneUITests/Pods-Netflix Clone-Netflix CloneUITests.release.xcconfig"; sourceTree = "<group>"; };
 		29FC259E52ABA94467A78E5B /* Pods_Netflix_CloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Netflix_CloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A019D6B2C6B96F80039E779 /* UpComingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingTableViewCell.swift; sourceTree = "<group>"; };
+		3A019D962C6DF39F0039E779 /* TitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewModel.swift; sourceTree = "<group>"; };
 		3AB5E4A22C638BCE00611A31 /* Netflix Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netflix Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AB5E4A52C638BCE00611A31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AB5E4A72C638BCE00611A31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				3AB5E4E62C63F5F000611A31 /* CollectionViewTableViewCell.swift */,
 				3AB5E4E82C65051F00611A31 /* HeroHeaderView.swift */,
 				3AB5E4F12C68E36700611A31 /* TitleCollectionViewCell.swift */,
+				3A019D6B2C6B96F80039E779 /* UpComingTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 		3AB5E4E22C63F4AD00611A31 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				3A019D962C6DF39F0039E779 /* TitleViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -489,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AB5E4DB2C638CA400611A31 /* SearchViewController.swift in Sources */,
+				3A019D6C2C6B96F80039E779 /* UpComingTableViewCell.swift in Sources */,
 				3AB5E4F22C68E36700611A31 /* TitleCollectionViewCell.swift in Sources */,
 				3AB5E4AA2C638BCE00611A31 /* MainTabbarViewController.swift in Sources */,
 				3AB5E4E72C63F5F000611A31 /* CollectionViewTableViewCell.swift in Sources */,
@@ -501,6 +508,7 @@
 				3AB5E4A82C638BCE00611A31 /* SceneDelegate.swift in Sources */,
 				3AB5E4ED2C68B41E00611A31 /* Title.swift in Sources */,
 				3AB5E4D72C638C7B00611A31 /* HomeViewController.swift in Sources */,
+				3A019D972C6DF39F0039E779 /* TitleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

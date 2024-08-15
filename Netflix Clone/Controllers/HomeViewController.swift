@@ -36,7 +36,6 @@ class HomeViewController: UIViewController {
     setupTableView()
     registerTableViewCells()
     setupNavBar()
-    getTrendingMovies()
   }
   
   override func viewWillLayoutSubviews() {
@@ -46,17 +45,6 @@ class HomeViewController: UIViewController {
   
   private func registerTableViewCells() {
     self.mainTableView.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
-  }
-  
-  private func  getTrendingMovies() {
-    APICaller.shared.getTrendingMovies { result in
-      switch result {
-      case.success(let movies):
-        print (movies)
-      case.failure(let error):
-        print(error.localizedDescription)
-      }
-    }
   }
   
   private func setupNavBar() {

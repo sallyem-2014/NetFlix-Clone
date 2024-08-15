@@ -60,4 +60,44 @@ class APICaller {
     }
     task.resume()
   }
+  
+  func getUpCommingMovies(completion: @escaping (Result<[Title], Error>) -> Void) {
+    guard let url = URL(string: Constant.baseURL + "/3/movie/upcoming") else { return }
+    
+    var request = URLRequest(url: url)
+    request.addValue(Constant.accessToken, forHTTPHeaderField: "Authorization")
+    
+    let task = URLSession.shared.dataTask(with: request) { data, _ , error in
+      guard let data = data, error == nil  else { return }
+      
+      do {
+        //  let result = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+        let result = try JSONDecoder().decode(MovieResponse.self, from: data)
+        completion(.success(result.results))
+      } catch {
+        completion(.failure(error))
+      }
+    }
+    task.resume()
+  }
+  
+  func getDiscoverMovies(completion: @escaping (Result<[Title], Error>) -> Void) {
+    guard let url = URL(string: Constant.baseURL + "/3/discover/movie") else { return }
+    
+    var request = URLRequest(url: url)
+    request.addValue(Constant.accessToken, forHTTPHeaderField: "Authorization")
+    
+    let task = URLSession.shared.dataTask(with: request) { data, _ , error in
+      guard let data = data, error == nil  else { return }
+      
+      do {
+        //  let result = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+        let result = try JSONDecoder().decode(MovieResponse.self, from: data)
+        completion(.success(result.results))
+      } catch {
+        completion(.failure(error))
+      }
+    }
+    task.resume()
+  }
 }
