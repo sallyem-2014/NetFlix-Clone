@@ -8,21 +8,27 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+  
   var titles: [Title] = [Title]()
- 
+  
   private let discoverTable: UITableView = {
     let tableview = UITableView()
     return tableview
   }()
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      setupNavBar()
-      registerCell()
-      setUpTableView()
-      getDiscoverMovies()
-    }
+  private let searchController : UISearchController = {
+    let searchController = UISearchController(searchResultsController: SearchResultViewController())
+    searchController.searchBar.placeholder = "search for ........."
+    searchController.searchBar.searchBarStyle = .minimal
+    return searchController
+  }()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupNavBar()
+    registerCell()
+    setUpTableView()
+    getDiscoverMovies()
+  }
   
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
@@ -33,6 +39,7 @@ class SearchViewController: UIViewController {
     self.title = "Search"
     self.navigationController?.navigationBar.prefersLargeTitles = true
     self.navigationController?.navigationItem.largeTitleDisplayMode = .always
+    self.navigationItem.searchController = searchController
   }
   
   private func registerCell() {
@@ -73,7 +80,7 @@ extension SearchViewController: UITableViewDelegate , UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 200
+    return 140
   }
   
 }
