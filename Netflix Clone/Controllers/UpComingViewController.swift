@@ -39,7 +39,6 @@ class UpComingViewController: UIViewController {
   private func registerCell() {
     tableView.register(UpComingTableViewCell.self, forCellReuseIdentifier: UpComingTableViewCell.identifer)
   }
-  
   private func setUpTableView() {
     self.view.addSubview(tableView)
     tableView.delegate = self
@@ -69,7 +68,9 @@ extension UpComingViewController: UITableViewDelegate , UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: UpComingTableViewCell.identifer, for: indexPath) as? UpComingTableViewCell else { return UITableViewCell() }
-    cell.configure(with: self.titles[indexPath.row])
+     let title = self.titles[indexPath.row].title ?? "unkown"
+     let posterURL = self.titles[indexPath.row].poster_path ?? ""
+    cell.configure(title: title, posterURL: posterURL)
     return cell
   }
   
@@ -77,4 +78,9 @@ extension UpComingViewController: UITableViewDelegate , UITableViewDataSource {
     return 140
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    self.tableView.deselectRow(at: indexPath, animated: true)
+    let title = titles[indexPath.row]
+    guard  let titleName = title.original_title ?? title.original_name else { return }
+  }
 }

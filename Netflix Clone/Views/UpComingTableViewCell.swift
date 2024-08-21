@@ -72,9 +72,9 @@ class UpComingTableViewCell: UITableViewCell {
     NSLayoutConstraint.activate(playButtonConstraints)
   }
   
-  func configure( with model: Title) {
-    guard let psoterImage = model.poster_path, let url  = URL(string: "https://image.tmdb.org/t/p/w500" + psoterImage ) else { return }
+  func configure(title: String, posterURL: String) {
+    guard let url  = URL(string: "https://image.tmdb.org/t/p/w500" + posterURL ) else { return }
     posterImage.kf.setImage(with: url)
-    title.text = model.title ?? "unknown Title"
+    self.title.text = title
   }
 }

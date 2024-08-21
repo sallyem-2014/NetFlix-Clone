@@ -32,7 +32,13 @@ class TitleCollectionViewCell: UICollectionViewCell {
     self.posterImage.frame = self.contentView.bounds
   }
   
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    posterImage.image = nil
+  }
+  
   func setupPosterImage(with model: String?) {
+    posterImage.image = nil
     guard let model = model , let url = URL(string: "https://image.tmdb.org/t/p/w500" + model) else { return }
     posterImage.kf.setImage(with: url)
   }

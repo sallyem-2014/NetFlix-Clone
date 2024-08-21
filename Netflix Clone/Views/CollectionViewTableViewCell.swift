@@ -53,6 +53,19 @@ class CollectionViewTableViewCell: UITableViewCell {
     super.layoutSubviews()
     collectionView.frame = contentView.bounds
   }
+  
+  private func downloadItem(indexPath: IndexPath) {
+    print("downloading ..... \(titles?[indexPath.row].id)")
+    guard let itemTosave = titles?[indexPath.row] else { return }
+    DataPersistanceManager.shared.downloadTitleWith(with: itemTosave) { result in
+      switch result {
+      case .success():
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "downloaded"), object: nil)
+      case.failure(let error):
+        print ("error = ", error)
+      }
+    }
+  }
 }
 
 extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -65,5 +78,17 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionVie
     cell.setupPosterImage(with: titles?[indexPath.row].poster_path)
     cell.backgroundColor = .systemPink
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    let config = UIContextMenuConfiguration( identifier: nil, previewProvider: nil) { _ in
+      
+      let downloadAction = UIAction(title: "download") { [weak self] _ in
+        guard let self else { return }
+        self.downloadItem(indexPath: indexPath)
+      }
+      return UIMenu(options: .displayInline, children: [downloadAction])
+    }
+    return config
   }
 }

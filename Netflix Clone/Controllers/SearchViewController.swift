@@ -28,6 +28,7 @@ class SearchViewController: UIViewController {
     registerCell()
     setUpTableView()
     getDiscoverMovies()
+    searchController.searchResultsUpdater = self
   }
   
   override func viewWillLayoutSubviews() {
@@ -75,7 +76,9 @@ extension SearchViewController: UITableViewDelegate , UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: UpComingTableViewCell.identifer, for: indexPath) as? UpComingTableViewCell else { return UITableViewCell() }
-    cell.configure(with: self.titles[indexPath.row])
+    let title = self.titles[indexPath.row].title ?? "unkown"
+    let posterURL = self.titles[indexPath.row].poster_path ?? ""
+   cell.configure(title: title, posterURL: posterURL)
     return cell
   }
   
@@ -83,4 +86,25 @@ extension SearchViewController: UITableViewDelegate , UITableViewDataSource {
     return 140
   }
   
+}
+
+extension SearchViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    let searchBar = searchController.searchBar
+    guard let query = searchBar.text,
+          !query.trimmingCharacters(in: .whitespaces).isEmpty,
+          query.trimmingCharacters(in: .whitespaces).count >= 3,
+          let resultcontroller = searchController.searchResultsController as? SearchResultViewController else { return }
+    APICaller.shared.serachMovies(query: query) { result in
+      switch result {
+      case .success(let movies):
+        resultcontroller.titles = movies
+        DispatchQueue.main.async {
+          resultcontroller.searchRsultCollectionView.reloadData()
+        }
+      case.failure(let error):
+        print (error.localizedDescription)
+      }
+    }
+  }
 }
